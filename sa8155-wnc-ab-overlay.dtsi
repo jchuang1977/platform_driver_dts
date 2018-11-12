@@ -45,6 +45,12 @@
 		label = "mhs_platform_device";
 		pinctrl-names = "wnc_ab_gpio";
 		pinctrl-0 = <&ab_ssc_qup>;
+
+		hw_bit0-gpio = <&tlmm 0 0>;
+		hw_bit1-gpio = <&tlmm 1 0>;
+		hw_bit2-gpio = <&tlmm 2 0>;
+		hw_bit3-gpio = <&tlmm 3 0>;
+		hw_bit4-gpio = <&tlmm 10 0>;
 		
 		status = "ok";
 	};

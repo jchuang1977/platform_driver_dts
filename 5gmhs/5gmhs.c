@@ -204,6 +204,50 @@ static int mhs_platform_device_probe(struct platform_device *pdev)
 	pr_info("Succedded to initialize mhs device.\n");
 
 
+	// sample code , compile will fail
+	pdata->hw_bit0_gpio = devm_gpiod_get(dev,"hw_bit0",GPIOD_IN);
+	if (IS_ERR(pdata->hw_bit0_gpio))
+	{
+			pr_info("Failed to get hw_bit0_gpio.\n");
+			printk(KERN_ALERT"Failed to get hw_bit0_gpio.\n");
+			return PTR_ERR(pdata->hw_bit0_gpio);
+	}
+	pdata->hw_bit1_gpio = devm_gpiod_get(dev,"hw_bit1",GPIOD_IN);
+	if (IS_ERR(pdata->hw_bit1_gpio))
+	{
+			pr_info("Failed to get hw_bit1_gpio.\n");
+			printk(KERN_ALERT"Failed to get hw_bit1_gpio.\n");
+			return PTR_ERR(pdata->hw_bit1_gpio);
+	}
+	pdata->hw_bit2_gpio = devm_gpiod_get(dev,"hw_bit2",GPIOD_IN);
+	if (IS_ERR(pdata->hw_bit2_gpio))
+	{
+			pr_info("Failed to get hw_bit2_gpio.\n");
+			printk(KERN_ALERT"Failed to get hw_bit2_gpio.\n");
+			return PTR_ERR(pdata->hw_bit2_gpio);
+	}
+	pdata->hw_bit3_gpio = devm_gpiod_get(dev,"hw_bit3",GPIOD_IN);
+	if (IS_ERR(pdata->hw_bit3_gpio))
+	{
+			pr_info("Failed to get hw_bit3_gpio.\n");
+			printk(KERN_ALERT"Failed to get hw_bit3_gpio.\n");
+			return PTR_ERR(pdata->hw_bit3_gpio);
+	}
+	pdata->hw_bit4_gpio = devm_gpiod_get(dev,"hw_bit4",GPIOD_IN);
+	if (IS_ERR(pdata->hw_bit4_gpio))
+	{
+
+			pr_info("Failed to get hw_bit4_gpio.\n");
+			printk(KERN_ALERT"Failed to get hw_bit4_gpio.\n");
+			return PTR_ERR(pdata->hw_bit4_gpio);
+	}
+
+        pdata->val =  gpiod_get_value(pdata->hw_bit4_gpio)*16 + gpiod_get_value(pdata->hw_bit3_gpio)*8 + gpiod_get_value(pdata->hw_bit2_gpio)*4 \
+                + gpiod_get_value(pdata->hw_bit1_gpio)*2 + gpiod_get_value(pdata->hw_bit0_gpio) ;
+	
+   // sample code , compile will fail
+
+
 	pinctrl = devm_pinctrl_get(dev);
 	if (IS_ERR_OR_NULL(pinctrl)) 
 	{
